@@ -28,7 +28,7 @@ def view():
         )
         except Exception as e:
             return "Error downloading image from S3: {}".format(str(e)), 500
-        return render_template('image.html', image_url=image_url)
+        return render_template('image.html', image_url=image_url),200
 
 @app.route('/upload', methods=['POST'])
 def upload():
