@@ -52,7 +52,7 @@ The following environment variables must be set for the application to function 
    docker build -t flask-ecs-image-app .
    ```
 
-3. **Run the Container Locally** (for testing):
+3. **Run the Container Locally** (for testing): 
    ```bash
    docker run -e IMAGES_BUCKET=your-bucket-name -e AWS_REGION=your-region -p 5000:5000 flask-ecs-image-app
    ```
@@ -88,6 +88,9 @@ Navigate to `http://localhost:5000/image` to see a random selection of images fr
 
 ### Health Check
 Visit `http://localhost:5000/health` to perform a health check on the application.
+
+## Already build image for app which is public 
+```docker pull srokade/s3ecsapp:image4```
 
 ## Conclusion
 This Flask application provides a simple interface for uploading and downloading images to and from an S3 bucket, leveraging AWS services and running on ECS. Ensure all necessary environment variables are set and IAM permissions are correctly configured for seamless operation.
