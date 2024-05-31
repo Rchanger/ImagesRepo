@@ -20,15 +20,15 @@ def view():
         bucket = os.environ["IMAGES_BUCKET"]
         config = Config(signature_version='s3v4')
         s3_client = boto3.client("s3",config=config)
-        image_number = random.randint(1, 10)
-        image_key = f"{image_number}.jpg"
+        image_name = request.args.get('image_name')
+        image_key = f"{image_name}.jpg"
         try:
             image_url = s3_client.generate_presigned_url(
             "get_object", Params={"Bucket": bucket, "Key": image_key}, ExpiresIn=300
         )
         except Exception as e:
             return "Error downloading image from S3: {}".format(str(e)), 500
-        return render_template('image.html', image_url=image_url),200
+        return render_template('image.html', image_url=image_url, image_name=image_name),200
 
 @app.route('/upload', methods=['POST'])
 def upload():

@@ -4,11 +4,11 @@ This Flask application provides functionality to upload and download images from
 
 ## Routes
 
-### `/image`
+### `/image?image_name={image_name}`
 - **Description**: Displays images available in the S3 bucket.
 - **Details**:
-  - Images must be named in a numerical format (e.g., 1.jpg, 2.jpg).
-  - The route displays images by generating random numbers between 1 and 10 and fetching the corresponding images from the bucket.
+  - Images must be present in s3 bucket.
+  - The route displays image provided in request fetching the corresponding images from the bucket.
   - Requires the following permissions:
     - `s3:GetObject`
     - `kms:Decrypt`
@@ -17,6 +17,7 @@ This Flask application provides functionality to upload and download images from
 - **Description**: Uploads an image to the specified S3 bucket.
 - **Details**:
   - Users can upload images to the bucket provided in the environment variables.
+  - only .jpg format is accepted
   - Requires the following permissions:
     - `s3:PutObject`
     - `kms:Encrypt`
@@ -66,7 +67,7 @@ The following environment variables must be set for the application to function 
 ### IAM Role Permissions
 Ensure the IAM role attached to your ECS task has the following permissions:
 
-- **For `/image` route**:
+- **For `/image?image_name={image_name}` route**:
   - `s3:GetObject`
   - `kms:Decrypt`
 
@@ -84,13 +85,22 @@ curl -X POST -F "file=@path/to/your/image.jpg" http://localhost:5000/upload
 ```
 
 ### Viewing Images
-Navigate to `http://localhost:5000/image` to see a random selection of images from your S3 bucket.
+Navigate to `http://localhost:5000/image?image_name=image` to see a random selection of images from your S3 bucket.
 
 ### Health Check
 Visit `http://localhost:5000/health` to perform a health check on the application.
 
 ## Already build image for app which is public 
-```docker pull srokade/s3ecsapp:image4```
+```docker pull srokade/s3ecsapp:image5```
 
 ## Conclusion
 This Flask application provides a simple interface for uploading and downloading images to and from an S3 bucket, leveraging AWS services and running on ECS. Ensure all necessary environment variables are set and IAM permissions are correctly configured for seamless operation.
+
+### Main page view
+
+![Alt text](assets/menu.png)
+
+### Image Display view
+
+![Alt text](assets/image_display.png)
+

@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Image Display</title>
-      </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Image Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
 <body>
-    <h1>Image Display</h1>
-    <p>Here is a random image: {{ image_url }}</p>
-    <img src="{{ image_url }}" alt="Random Image">
+    <div class="container">
+        <h1>Image Display</h1>
+        <p>Here is your image: {{ image_name }}</p>
+        <img src="{{ image_url }}" alt="Random Image">
+    </div>
 </body>
 </html>

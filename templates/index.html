@@ -1,14 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="file"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        button, input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
 
-<title>Hello Welcome</title>
+    <div class="container">
+        <h1>Upload New Image</h1>
+        <form method="post" enctype="multipart/form-data" action="/upload">
+          <input type="file" name="file" accept=".jpg" required>
+          <input type="submit" value="Upload">
+        </form>
+    </div>
 
-<h1>Upload new File</h1>
-<form method=post enctype=multipart/form-data action="/upload">
-  <input type=file name=file>
-  <input type=submit value=Upload>
-</form>
+    <div class="container">
+        <h1>Enter Image Name</h1>
+        <form action="/image" method="get">
+            <label for="image_name">Image Name:</label>
+            <input type="text" id="image_name" name="image_name" required>
+            <button type="submit">View Image</button>
+        </form>
+    </div>
 
-<h1>click <a href="/image">here</s> to see image</h1>
-
-
-<!doctype html>
+</body>
+</html>
